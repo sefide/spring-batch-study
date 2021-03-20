@@ -27,3 +27,25 @@ next() > cursor의 위치를 이동시키는 메서드로 다음 행의 결과�
 - JdbcPagingItemReader
 - HibernatePagingItemReader
 - JpaPagingItemReader
+
+
+---
+
+## Test
+
+### @SpringBatchTest
+
+스프링 배치 기반의 테스트를 특정한다. 
+아래 4가지의 빈을 자동등록한다. 
+
+*since Spring Batch 4.1*
+
+* JobLauncherTestUtils : Spring Batch Test 전용 유틸 제공  
+* JobRepositoryTestUtils : Job Repository 관련 기능 제공 (Job Execution 테이블에 생성/제거 기능)
+* JobScopeTestExecutionListener : JobScope 컨텍스트 생성 
+* StepScopeTestExecutionListener : StepScope 컨텍스트 생성  
+
+<br>
+.. junit의 버전에 따라 설정 방법이 조금 다를 수 있으니 주석 참고 
+
+
