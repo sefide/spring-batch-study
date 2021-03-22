@@ -1,3 +1,5 @@
+use spring_batch;
+
 ## Job 실행 기록 - 고유한 JobParamter만 기록
 SELECT * FROM BATCH_JOB_INSTANCE;
 

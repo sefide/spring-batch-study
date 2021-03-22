@@ -17,16 +17,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBatchTest
-@SpringBootTest(classes = {JpaPagingItemReaderJobConfiguration.class, TestBatchConfig.class})
-public class JpaPagingItemReaderJobConfigurationTest {
+@SpringBootTest(classes = {JdbcPagingItemReaderJobConfiguration.class, TestBatchConfig.class})
+public class JdbcPagingItemReaderJobConfigurationTest {
 
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Test
-    public void name() throws Exception {
+    public void JdbcPagingItemReaderJob_통합_테스트() throws Exception {
         JobParameters jobParameters = new JobParametersBuilder()
-                .addString("version", "1")
+                .addString("version", "3")
                 .toJobParameters();
 
         JobExecution jobExecution = jobLauncherTestUtils.launchJob(jobParameters);
