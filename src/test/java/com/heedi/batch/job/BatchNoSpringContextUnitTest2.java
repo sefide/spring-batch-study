@@ -35,11 +35,11 @@ public class BatchNoSpringContextUnitTest2 {
 
     @Before
     public void setUp() {
-        this.context = new AnnotationConfigApplicationContext(TestDataSourceConfiguration.class); // (1)
-        this.dataSource = (DataSource) context.getBean("dataSource"); // (2)
-        this.jdbcTemplate = new JdbcTemplate(this.dataSource); // (3)
+        this.context = new AnnotationConfigApplicationContext(TestDataSourceConfiguration.class);
+        this.dataSource = (DataSource) context.getBean("dataSource");
+        this.jdbcTemplate = new JdbcTemplate(this.dataSource);
         this.orderDate = LocalDate.of(2019, 10, 6);
-        this.job = new BatchOnlyJdbcReaderTestConfiguration(dataSource); // (4)
+        this.job = new BatchOnlyJdbcReaderTestConfiguration(dataSource);
         this.job.setChunkSize(10); // (5)
     }
 
@@ -56,16 +56,16 @@ public class BatchNoSpringContextUnitTest2 {
         long amount1 = 1000;
         long amount2 = 100;
         long amount3 = 10;
-        jdbcTemplate.update("insert into sales (order_date, amount, order_no) values (?, ?, ?)", orderDate, amount1, "1"); // (1)
+        jdbcTemplate.update("insert into sales (order_date, amount, order_no) values (?, ?, ?)", orderDate, amount1, "1");
         jdbcTemplate.update("insert into sales (order_date, amount, order_no) values (?, ?, ?)", orderDate, amount2, "2");
         jdbcTemplate.update("insert into sales (order_date, amount, order_no) values (?, ?, ?)", orderDate, amount3, "3");
 
         JdbcPagingItemReader<SalesSum> reader = job.batchOnlyJdbcReaderTestJobReader(orderDate.format(FORMATTER));
-        reader.afterPropertiesSet(); // (3)
+        reader.afterPropertiesSet();
 
         // when & then
         assertThat(reader.read().getAmountSum()).isEqualTo(amount1 + amount2 + amount3);
-        assertThat(reader.read()).isNull(); //(5)
+        assertThat(reader.read()).isNull();
     }
 
     @Configuration
@@ -75,7 +75,7 @@ public class BatchNoSpringContextUnitTest2 {
                         "amount bigint not null, " +
                         "order_date date, " +
                         "order_no varchar(255), " +
-                        "primary key (id)) engine=InnoDB;";
+                        "primary key (id)) engine = InnoDB;";
 
         @Bean
         public DataSource dataSource() {
