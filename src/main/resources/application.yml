@@ -9,6 +9,9 @@ spring:
 logging.level.org.springframework.batch: DEBUG
 
 ---
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
 spring:
   profiles: local
   datasource:
