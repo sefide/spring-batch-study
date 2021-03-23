@@ -25,7 +25,7 @@ import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.
 
 //@SpringBatchTest
 //@SpringBootTest
-public class BatchNoSpringContextUnitTest2 {
+public class BatchNoSpringContextUnitTest {
 
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
