@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import javax.persistence.EntityManagerFactory;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -32,6 +33,7 @@ public class PartitionLocalConfiguration {
 
     private final ProductRepository productRepository;
     private final ProductBackupRepository productBackupRepository;
+    private final EntityManagerFactory entityManagerFactory;
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
 
